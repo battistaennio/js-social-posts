@@ -97,6 +97,7 @@ posts.forEach((obj) => {
             </div>            
         </div>
     `
+    
     //inserisco i div.post nel container
     container.innerHTML += postStructure;
 
@@ -130,13 +131,13 @@ likeBtn.forEach((element, index) => {
         //converto il contenuto in numero
         let likeNumber = parseInt(likeString.innerText);
 
-        //se ho cliccato sul like aggiungo +1 al numero dei like
+        //se ho cliccato sul like aggiungo +1 al numero dei like e aggiungo l'id del post nell'array
         if (element.classList.contains("like-button--liked")) {
             likeNumber++
             likedPosts.push(this.dataset.postid);
             console.log(likedPosts);
 
-        } else {    //altimenti sottraggo 1
+        } else {    //altimenti sottraggo 1 e tolgo l'id del post nell'array
             likeNumber--
             likedPosts.pop(this.dataset.postid);
         }
@@ -147,4 +148,5 @@ likeBtn.forEach((element, index) => {
     });
 
 });
+
   
