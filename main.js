@@ -107,6 +107,8 @@ const likeBtn = document.querySelectorAll(".like-button");
 
 //seleziono il contatore dei like
 const likeCounter = document.querySelectorAll(".js-likes-counter");
+//creo un array vuoto dove salvare l'id dei post con like
+const likedPosts = [];
 
 //per ogni oggetto della lista di likeBtn seleziono un elemento e il suo indice
 likeBtn.forEach((element, index) => {
@@ -131,8 +133,12 @@ likeBtn.forEach((element, index) => {
         //se ho cliccato sul like aggiungo +1 al numero dei like
         if (element.classList.contains("like-button--liked")) {
             likeNumber++
+            likedPosts.push(this.dataset.postid);
+            console.log(likedPosts);
+
         } else {    //altimenti sottraggo 1
             likeNumber--
+            likedPosts.pop(this.dataset.postid);
         }
 
         //aggiorno in pagina
