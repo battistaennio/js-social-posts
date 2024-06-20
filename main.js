@@ -112,12 +112,15 @@ const likeCounter = document.querySelectorAll(".js-likes-counter");
 likeBtn.forEach((element, index) => {
 
     //evento su click del like
-    element.addEventListener("click", function () {
+    element.addEventListener("click", function (event) {
+
+        //la pagina non si ricarica al click
+        event.preventDefault();
 
         //dichiaro il singolo like cliccato
         const clickedElement = likeBtn[index];
-        //aggiungo la classe liked al like cliccato
-        clickedElement.classList.add("like-button--liked");
+        //aggiungo/tolgo la classe liked al like cliccato
+        clickedElement.classList.toggle("like-button--liked");
 
         //seleziono il numero dei like del post a cui ho messo like
         const likeString = likeCounter[index];
@@ -125,8 +128,12 @@ likeBtn.forEach((element, index) => {
         //converto il contenuto in numero
         let likeNumber = parseInt(likeString.innerText);
 
-        //like +1
-        likeNumber++;
+        //se ho cliccato sul like aggiungo +1 al numero dei like
+        if (element.classList.contains("like-button--liked")) {
+            likeNumber++
+        } else {    //altimenti sottraggo 1
+            likeNumber--
+        }
 
         //aggiorno in pagina
         likeString.innerText = likeNumber;
