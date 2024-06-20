@@ -91,7 +91,7 @@ posts.forEach((obj) => {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${obj.likes}</b> persone
+                        Piace a <b id="like-counter-${obj.id}" class="js-likes-counter">${obj.likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -99,4 +99,24 @@ posts.forEach((obj) => {
     `
     //inserisco i div.post nel container
     container.innerHTML += postStructure;
+
 });
+
+//seleziono il like button
+const likeBtn = document.querySelectorAll(".like-button");
+
+//per ogni oggetto della lista di likeBtn seleziono un elemento e il suo indice
+likeBtn.forEach((element, index) => {
+
+    //evento su click dell'elemento
+    element.addEventListener("click", function () {
+
+        //dichiaro il singolo elemento cliccato
+        const clickedElement = likeBtn[index];
+        //aggiungo la classe liked all'elemento cliccato
+        clickedElement.classList.add("like-button--liked");
+
+    });
+
+});
+  
